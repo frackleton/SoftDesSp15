@@ -24,13 +24,30 @@ def update_counter(file_name, reset=False):
 	2
 	>>> update_counter('blah2.txt',True)
 	1
-	>>> update_counter('blah.txt')
-	3
 	>>> update_counter('blah2.txt')
 	2
+	>>> update_counter('blah.txt')
+	3
 	"""
-	pass
+	if reset == True or exists('file_name') == False:
+		#to initiate the counter and dump it in a new file
+		counter = 1
 
+		t1 = dump(counter,open('file_name','w'))
+		
+		
+	elif reset == False and exists('file_name') == True:
+		#to load, increment the counter, and put it back
+		counter= load(open('file_name','r+'))
+
+		counter +=1
+
+		dump(counter, open('file_name','r+'))
+	
+	else: #incase God knows what happens 
+		raise ValueError 
+
+	return load(open('file_name','r+'))
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
 		import doctest
