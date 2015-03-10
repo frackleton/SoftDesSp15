@@ -14,10 +14,6 @@ while(True):
 		frame[y:y+h,x:x+w,:] = cv2.dilate(frame[y:y+h,x:x+w,:], kernel)
 		cv2.line(frame,(x,y),(x+w,y+h),(0,0,255),5)
 		cv2.line(frame,(x,y+h),(x+w,y),(0,0,255),5)
-		#cv2.ellipse(frame[y:y+h,x:x+w,:],(x,y),(x+w,y+h), 90,0,0,(0,0,0))
-		
-    	#cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255))
-    	#cv2.ellipse(frame,  (h-2),(w/2),(90),(45),(255,0,0))
     	
 	#Display the resulting frame
 	cv2.imshow('frame',frame)
