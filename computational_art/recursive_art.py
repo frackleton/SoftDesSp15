@@ -60,6 +60,19 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
         >>> remap_interval(5, 4, 6, 1, 2)
         1.5
     """
+    end_quotient = input_interval_end / output_interval_end
+    quotient_end = output_interval_end / input_interval_end
+    #start_quotient = input_interval_start / output_interval_start
+    #quotient_start = output_interval_start / input_interval_start
+    # use if/and statements to code for this. Have to set end_quoient = start_quotient 
+    if end_quotient >=1 and input_interval_end % output_interval_end == 0 and input_interval_start / output_interval_start == end_quotient:
+        return val * end_quotient
+    elif quotient_end >= 1 and output_interval_end % input_interval_end == 0 and quotient_end == output_interval_start / input_interval_start:
+        return val * quotient_end
+    else: 
+        return val + (input_interval_end - output_interval_end)
+
+# how do I avoid the divide by zero pitfal? (is it maybe something to do with screening the intervals for a number 0 first?)
     # TODO: implement this
     pass
 
@@ -139,8 +152,8 @@ if __name__ == '__main__':
     # Create some computational art!
     # TODO: Un-comment the generate_art function call after you
     #       implement remap_interval and evaluate_random_function
-    #generate_art("myart.png")
+    generate_art("myart.png")
 
     # Test that PIL is installed correctly
     # TODO: Comment or remove this function call after testing PIL install
-    test_image("noise.png")
+    #test_image("noise.png")
